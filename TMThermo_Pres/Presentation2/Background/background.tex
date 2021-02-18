@@ -1,0 +1,59 @@
+\documentclass{beamer}
+\beamertemplatenavigationsymbolsempty
+\usetheme{Rochester}
+\usecolortheme{beaver}
+%\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\parindent=0.pt
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage{csquotes}
+\usepackage[backend=biber,
+style=phys,
+citestyle=authoryear
+]{biblatex}
+\addbibresource{biblio.bib} 
+\usepackage[export]{adjustbox}
+\usefonttheme[onlymath]{serif}
+\newcommand{\R}{\mathbb{R}}
+\DeclareMathOperator\supp{supp}
+\DeclareMathOperator\shannon{H}
+\renewcommand{\qedsymbol}{\includegraphics[width=0.6in, right]{QED Gregory.png}}
+\graphicspath{{./Images}/}
+
+
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+
+\title{Thermodynamic Costs of Turing Machines \parencite{Kolchinsky_2020}}
+\author{Daniel Briseno}
+
+\begin{document}
+\frame{\titlepage}
+
+% Introduce the context of the paper and the paper's main purpose
+\input{./Slides/context}
+
+% Introduce concept of energy from information
+\input{./Slides/energyFromInfo}
+
+%Introduce concept of Entropy
+\input{./Slides/entropy}
+
+% Introduce Turing Machines and other CS background
+\input{./Slides/turingMachines}
+
+%Introduce AIT background
+\input{./Slides/ait.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%5%References
+\begin{frame}{References}
+    \printbibliography
+\end{frame}
+
+ 
+
+\end{document}
