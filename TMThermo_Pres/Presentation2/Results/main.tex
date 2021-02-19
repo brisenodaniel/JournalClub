@@ -14,10 +14,11 @@
 style=phys,
 citestyle=authoryear
 ]{biblatex}
-\addbibresource{biblio.bib} 
+\addbibresource{./References/biblio.bib} 
 \usepackage[export]{adjustbox}
 \usefonttheme[onlymath]{serif}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\sub}[1]{_{\text{#1}}}
 \DeclareMathOperator\supp{supp}
 \DeclareMathOperator\shannon{H}
 \renewcommand{\qedsymbol}{\includegraphics[width=0.6in, right]{QED Gregory.png}}
@@ -36,9 +37,27 @@ citestyle=authoryear
 %Recap of Background info
 \input{./Slides/backgroundRecap}
 
-%Introduce System under study
+%System under study
 \input{./Slides/physicalSetup}
 
-%Introduce Proposition 1
+%Proposition 1
 \input{./Slides/prop1}
+
+%Coin-Flippin Realization Analysis
+\input{./Slides/coinFlippingRealization}
+
+%Dominating Realization Analysis
+\input{./Slides/dominatingRealization}
+
+%Heat Complexity Trade-off Analysis
+\input{./Slides/heatComplexityTradeOff}
+
+%closing remarks
+\input{./Slides/Conclusion}
+
+%References
+\begin{frame}{References}
+	\printbibliography
+\end{frame}
+
 \end{document}

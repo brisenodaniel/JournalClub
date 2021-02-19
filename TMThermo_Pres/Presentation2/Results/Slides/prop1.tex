@@ -1,5 +1,8 @@
+
+%Formal definitions for Realization of a TM
 \begin{frame}{Realizations of a TM}
 \begin{block}{Realization Formally Defined}
+{\footnotesize
 	\begin{itemize}
 		\item Let $p_{Y|X}$ be the conditional probability distribution of the system's final state $y$ given initial state $x$
 		\item A physical process is a \textbf{realization} of a partial function $f : \mathcal{X} \nrightarrow \mathcal{X}$ if
@@ -7,11 +10,85 @@
 			p_{Y|X}(y|x) = \delta(f(x),y)
 		\end{equation*}
 	\end{itemize}		
+}
 \end{block}
 \begin{block}{Realization of a TM $M$ Formally Defined}
+{\footnotesize
 	\begin{itemize}
 		\item TM $M$ can be written as a partial function $\phi_M:\{0,1\} \nrightarrow\{0,1\}$
 		\item A physical process is a realization of a TM $M$ if it is a realization of $\phi_M$
+		\item A physical process is a \textbf{computable realization} if its heat map $Q(x)$ is computable
 	\end{itemize}
+}
 \end{block}
 \end{frame}
+
+
+%Proposition 1
+\begin{frame}{Proposition 1}
+\begin{block}{Proposition Statement}
+Given a countable set $\mathcal{X}$ and partial functions $f:\mathcal{X} \nrightarrow \mathcal{X}$ and $G:\mathcal{X} \nrightarrow \mathbb{R}$, the following are equivalent:
+\begin{enumerate}
+    \item For all $p_X$ with $\text{supp}\: p_X \subseteq \text{dom}\: f$
+    \begin{equation*}
+        \langle G \rangle_{p_X} + S[p_{f(X)}] - S(p_X) \ge 0
+    \end{equation*}
+    \item For all $y\in \text{img}\: f$
+    \begin{equation*}
+        \sum_{x:f(x) = y} e^{-G(x)} \le 1
+    \end{equation*}
+    \item There exists a realization of $f$ coupled to a heat bath at temperature $T$ whose heat function $Q$ obeys
+    \begin{align*}
+        Q(x)/kT &= G(x)  &&\forall x\in\text{dom}\:f
+    \end{align*}
+\end{enumerate}
+\end{block}
+\end{frame}
+
+%Recovery of Landauer cost from Prop 1
+
+\begin{frame}{Proposition 1}
+\begin{block}{Recovering Landauer Cost From Proposition 1}
+{\small
+Take $x\in\{0,1\}$ to be a random bit determined by a coin toss, and $f$ as the bit-erasing operation $f(x) = 0$. Then:
+\begin{align*}
+    p_X(x) &= \frac{1}{2}\\
+    p_{f(X)}(y) &= \begin{cases} 0 &\text{if } y=1\\ 1 &\text{if }y=0\end{cases}
+\end{align*}
+Then for any $G(x) = Q(x)/kT$, condition 1 implies:
+\begin{align*}
+    \langle G \rangle_{p_X} + S[p_{f(X)}] - S(p_X) &\ge 0\\
+    \implies \langle G\rangle_{p_X} &\ge S(p_X)\\
+    \implies \langle G\rangle_{p_X} &\ge \ln 2
+\end{align*}
+}
+\end{block}
+\end{frame}
+
+\begin{frame}{Proposition 1}
+\begin{block}{Recovering Landauer Cost From Proposition 1 (cont.)}
+We would like to characterize the cost of an arbitrary bit deletion, so taking $G$ to be identical for inputs $\{0,1\}$
+\begin{align*}
+    G(x) \ge \ln 2
+\end{align*}
+and using equivalent condition 3 from Proposition 1 we recover the Landauer cost of a bit deletion:
+\begin{align*}
+    Q(x)/kT &\ge \ln 2\\
+    \implies Q(x) \ge kT \ln 2
+\end{align*}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Realizations of TM}
+\begin{block}{Realizations of TM Used in Analysis}
+    \begin{itemize}
+        \item \textbf{Coin-Flipping Realization}: thermodynamically reversible when inputs are sampled from coin-flipping distribution
+        \item \textbf{Dominating Realization}: produces less heat than any computable realization of a TM
+    \end{itemize}
+\end{block}
+\end{frame}
+
+
+
+

@@ -1,0 +1,98 @@
+\begin{frame}{Dominating Realization}
+\begin{block}{Heat Function for Dominating Realization of TM $M$}
+Can be shown that $G(x) = \ln(2)K[x|\phi_M(x)]$ satisfies condition 2 of Prop 1. Thus
+\begin{equation*}
+    Q_\text{dom} = kT\ln(2)K[x|\phi_M(x)]
+\end{equation*}
+is the heat function for a realization, called the \textit{dominating realization}, of TM $M$.
+\begin{itemize}
+    \item Inputs generating a lot of heat are large and incompressible, and $\phi_M$ is non-invertible for that input
+    \item Inputs generating little heat are those for which $\phi_M$ is invertible
+    \begin{itemize}
+        \item For these inputs, $Q(x) = O(1)$
+    \end{itemize}
+\end{itemize}
+\end{block}
+\end{frame}
+
+%Computability Constraints
+\begin{frame}{Dominating Realization}
+\begin{block}{Non-Computability}
+\begin{equation*}
+    Q_\text{dom} = kT\ln (2)K[x|\phi_M(x)]
+\end{equation*}
+    \begin{itemize}
+        \item Dominating realization is not computable
+        \item It is upper semi-computable
+        \begin{itemize}
+            \item Can be obtained in limit by sequence of increasingly efficient computable realizations $Q_n(x)$
+            \item Converges on $Q_\text{dom}(x)$ from above
+        \end{itemize}
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+%Optimality of Dominating Realization
+\begin{frame}{Dominating Realization}
+\begin{block}{Efficiency of Dominating Realization}
+    For any other \textit{computable} realization with heat function $Q(X)$:
+    \begin{equation*}
+        Q(x) \ge Q_\text{dom} - kT\left[\ln(2)K(Q/kT) + K(\phi_M)\right] + O(1)
+    \end{equation*}
+    \begin{itemize}
+        \item $Q_\text{dom}$ is minimal up to a negative constant. 
+        \begin{itemize}
+            \item For $Q(x) \le Q_\text{dom}$, $\phi_M$ has to have high complexity, or $Q$ has to have high complexity
+        \end{itemize}
+        \item The above inequality only holds for computable realizations. 
+    \end{itemize}
+\end{block}
+\end{frame}
+
+%Applicability
+\begin{frame}{Dominating Realization}
+\begin{block}{Applicability of the Dominating Realization}
+	\begin{align*}
+        Q(x) \ge Q_\text{dom} - kT\left[\ln(2)K(Q/kT) + K(\phi_M)\right] + O(1)
+    \end{align*}
+    \begin{itemize}
+    	\item Above inequality only holds if LHS is $Q$ for a \textit{computable} realization
+    	\item Validity of Church-Turing Thesis extends applicability to all physical realizations
+    \end{itemize}
+\end{block}
+\end{frame}
+
+%Comparison with Coin-Flipping Realization
+\begin{frame}{Dominating Realization}
+\begin{block}{Comparison With Coin-Flipping Realization}
+\begin{itemize}
+	\item Coin-Flipping Realization uncomputable, thus, not necessarily true that $Q\sub{coin}(x) \ge Q\sub{dom}(x) + O(1)$. Can be shown that
+	\begin{equation*}
+	Q\sub{coin}(x) \ge Q\sub{dom}(x) + O\{\log(K[\phi_U(x)])\}
+	\end{equation*}
+	\item Minimal heat production for output $y$:
+	\begin{itemize}
+		\item $Q\sub{coin}$ minimized for $\ell(x) = K(\phi_M(x))$. Finding such a program is uncomputable.
+		\item $Q\sub{dom}$ minimized if $\phi_M^{-1}(y) = x$. Finding such a program as simple as ``print $y$".
+	\end{itemize}
+	\item Coin-Flipping realization has 0 EP on coin-flipping distribution. Dominating realization has $EP > 0 $ for all input distributions
+\end{itemize}
+\end{block}
+\end{frame}
+
+%Introduce Heat vs Complexity Trade-off
+\begin{frame}{Dominating Realization}
+\begin{block}{Heat VS. Complexity Trade-off}
+     \begin{equation*}
+        Q(x) \ge Q_\text{dom} - kT[\ln 2K(Q/kT) + K(\phi_M)] + O(1)
+    \end{equation*}
+    Using $Q_\text{dom} = kT\ln 2K[x|\phi_M(x)]$ and re-arraigning gives:
+    \begin{equation*}
+        Q(x)/\ln 2 + K(Q) + K(f) \ge K(x|y) + O(1)
+    \end{equation*}
+    \begin{itemize}
+        \item Every computation mapping $x$ to $y$ comes with a "cost`` of $K(x|y)$
+        \item Cost can be paid by generating heat, having a high complexity heat function, or having a high complexity mapping $f$
+    \end{itemize}
+\end{block}
+\end{frame}

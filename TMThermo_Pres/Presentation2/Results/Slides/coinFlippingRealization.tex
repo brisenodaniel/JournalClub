@@ -1,0 +1,126 @@
+
+%Input and Output Distributions
+\begin{frame}{Coin-Flipping Realization}
+    \begin{block}{Input Distribution}
+     \begin{equation*}
+        m_X^\text{coin}(x) := \begin{cases} 2^{-\ell(x)} &\text{if $x\;\in$ dom $\phi_M$}\\ 0 &\text{otherwise}\end{cases}
+    \end{equation*}
+    \begin{equation*}
+        p_X^\text{coin}(x) = m_X^\text{coin}(x)/\Omega_M
+    \end{equation*}
+    \end{block}
+    \begin{block}{Output Distribution}
+    \begin{equation*}
+        m_Y^\text{coin}(y) = \sum_{x:\phi_M(x) = y} 2^{-\ell(x)}
+    \end{equation*}
+    \begin{equation*}
+        p_Y^\text{coin}(y) = m_Y(y) / \Omega_M
+    \end{equation*}
+    \end{block}
+\end{frame}
+
+%Heat Function
+\begin{frame}{Coin-Flipping Realization}
+\begin{block}{Associated Heat Function of Coin-Flipping Realization for TM $M$}
+Can be shown that 
+\begin{equation*}
+    G(x) = -\ln p_X^\text{coin}(x) + \ln p_Y^\text{coin}[\phi_M(x)]
+\end{equation*}
+Satisfies  condition 2 of Prop 1. Thus, multiplying by $kT$ and using definitions of $p_X^\text{coin}$ and $p_Y^\text{coin}$:
+\begin{align*}
+    Q_\text{coin}(x) &= kT\{-\ln p_X^\text{coin} (x)+ \ln p_Y^\text{coin}[\phi_M(x)]\}\\
+    &= kT\ln \{\ell(x) + \log_2 m_Y[\phi_M(x)]\}
+\end{align*}
+\end{block}
+\end{frame}
+
+
+%Verification of Zero EP on Coin Flipping Input Dist.
+\begin{frame}{Coin-Flipping Realization}
+    \begin{block}{Zero Entropy Production}
+    \begin{equation*}
+        Q_\text{coin}(x) = kT\{-\ln p_X^\text{coin} + \ln p_Y^\text{coin}[\phi_M(x)]\}
+    \end{equation*}
+    Using 
+    \begin{equation*}
+        \langle Q_\text{coin} \rangle_{p_X}=\sum_{x\in X}p_X(x)Q(x)
+    \end{equation*}
+    We can verify that:
+    \begin{align*}
+        &\langle Q_\text{coin}\rangle_{p_X} = kT\{ S(p_X^\text{coin}) - S(p_Y^\text{coin})\}\\
+        \implies &\Sigma(p_X^\text{coin}) = S(p_Y^\text{coin}) - S(p_X^\text{coin}) + S(p_X^\text{coin}) - S(p_Y^\text{coin}) = 0
+    \end{align*}
+    \end{block}
+\end{frame}
+
+%Show that CFR has minimal heat for short and reversible input programs
+\begin{frame}{Coin-Flipping Realization}
+\begin{block}{Associated Heat Function of Coin-Flipping Realization for TM $M$}
+\begin{equation*}
+    Q_\text{coin}(x) = kT\ln \{\ell(x) + \log_2 m_Y[\phi_M(x)]\}
+\end{equation*}
+Recall definition of $m_Y$:
+\begin{equation*}
+        m_Y^\text{coin}(y) = \sum_{x:\phi_M(x) = y} 2^{-\ell(x)}
+    \end{equation*}
+\begin{itemize}
+    \item $\log_2 m_Y[\phi_M(x)]$ minimal for logically reversible $\phi_M$.
+    \item $Q_\text{coin}$ minimal for short and logically reversible input programs.
+\end{itemize}
+\end{block}
+\end{frame}
+
+%Show that CFR has minimal heat for shortest program capable of producing output
+\begin{frame}{Coin-Flipping Realization}
+    \begin{block}{Levin's Coding Theorem for UTM}
+    {\footnotesize
+    \begin{align*}
+        -\log_2 m_Y(y) = K(y) + O(1)
+    \end{align*}
+    }
+    \end{block}
+    \begin{block}{Heat Function for UTM}
+    {\footnotesize
+    \begin{equation*}
+        Q_\text{coin}(x) = kT\ln 2 \{\ell(x) - K[\phi_M(x)]\} + O(1)
+    \end{equation*}
+    \begin{itemize}
+        \item $Q_\text{coin}$ achieves its minimum value when $x$ is the shortest program capable of producing $\phi_U(x)$ (always true if $\phi_U$ is reversible).
+        \begin{equation*}
+            \min_{x:\phi_U(x)=y} Q_\text{coin}(x) = O(1)
+        \end{equation*}
+    \end{itemize}
+    }
+    \end{block}
+\end{frame}
+
+%Show Infinite Expected Heat when inputs drawn from coin flipping input dist.
+\begin{frame}{Coin-Flipping Realization}
+\begin{block}{Expected Heat of Coin-Flipping Distribution}
+Recall that 
+\begin{equation*}
+    \langle Q_\text{coin}\rangle_{p_X} = kT\{ S(p_X^\text{coin}) - S(p_Y^\text{coin})\}
+\end{equation*}
+\begin{itemize}
+    \item Difference of entropies is infinite
+    \item Implies infinite expected heat
+    \item Implies infinite expected length of input programs and infinite expected runtime
+\end{itemize}
+\end{block}
+\end{frame}
+
+%Choosing inputs to minimize heat incurr non-zero EP
+\begin{frame}{Coin-Flipping Realization}
+    \begin{block}{Initial Distribution for Minimum Expected Heat}
+    Input distribution can be varied to minimize $Q(x)$ in a UTM:
+    \begin{align*}
+        p_X^\text{min} (x)&= \delta(x_0,x)\\
+        Q_\text{coin}(x_0) &= \min_{x\in X} Q(x) = O(1)\\
+        \langle Q_\text{coin}\rangle_{p_X^\text{min}} &= O(1)
+    \end{align*}
+    But then EP is no longer 0:
+    \begin{equation*}
+        \Sigma(p_X^\text{min}) = S(p_Y^\text{min}) - S(p_X^\text{min}) + O(1) > 0
+    \end{equation*}
+    \end{block}
+\end{frame}
