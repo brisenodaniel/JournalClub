@@ -1,0 +1,17 @@
+\begin{frame}{Realizations of a TM}
+\begin{block}{Realization Formally Defined}
+	\begin{itemize}
+		\item Let $p_{Y|X}$ be the conditional probability distribution of the system's final state $y$ given initial state $x$
+		\item A physical process is a \textbf{realization} of a partial function $f : \mathcal{X} \nrightarrow \mathcal{X}$ if
+		\begin{equation*}
+			p_{Y|X}(y|x) = \delta(f(x),y)
+		\end{equation*}
+	\end{itemize}		
+\end{block}
+\begin{block}{Realization of a TM $M$ Formally Defined}
+	\begin{itemize}
+		\item TM $M$ can be written as a partial function $\phi_M:\{0,1\} \nrightarrow\{0,1\}$
+		\item A physical process is a realization of a TM $M$ if it is a realization of $\phi_M$
+	\end{itemize}
+\end{block}
+\end{frame}

@@ -1,0 +1,44 @@
+\documentclass{beamer}
+\beamertemplatenavigationsymbolsempty
+\usetheme{Rochester}
+\usecolortheme{beaver}
+%\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\parindent=0.pt
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage{csquotes}
+\usepackage[backend=biber,
+style=phys,
+citestyle=authoryear
+]{biblatex}
+\addbibresource{biblio.bib} 
+\usepackage[export]{adjustbox}
+\usefonttheme[onlymath]{serif}
+\newcommand{\R}{\mathbb{R}}
+\DeclareMathOperator\supp{supp}
+\DeclareMathOperator\shannon{H}
+\renewcommand{\qedsymbol}{\includegraphics[width=0.6in, right]{QED Gregory.png}}
+\graphicspath{{./Images}/}
+
+
+\title{Thermodynamic Costs of Turing Machines \parencite{Kolchinsky_2020}}
+\author{Daniel Briseno}
+
+
+\begin{document}
+\frame{\titlepage}
+%Re-introduce context of the paper and the paper's main results
+\input{./Slides/context}
+
+%Recap of Background info
+\input{./Slides/backgroundRecap}
+
+%Introduce System under study
+\input{./Slides/physicalSetup}
+
+%Introduce Proposition 1
+\input{./Slides/prop1}
+\end{document}
